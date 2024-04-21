@@ -10,7 +10,9 @@ from PIL import Image
 import fitz  # PyMuPDF
 import google.generativeai as genai
 
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+# Get API key from Streamlit secrets
+api_key = st.secrets["GOOGLE_API_KEY"]
+genai.configure(api_key=api_key)
 
 
 def get_gemini_response(input, pdf_content, prompt):
